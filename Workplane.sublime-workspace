@@ -1,0 +1,399 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ViewP",
+				"PlanViewPlane	PlanViewPlane"
+			],
+			[
+				"Nul",
+				"NullReferenceException()	NullReferenceException()"
+			],
+			[
+				"D",
+				"Documents	DocumentSet { get; }"
+			],
+			[
+				"GetEle",
+				"GetElement(string uniqueId)	Element"
+			],
+			[
+				"I",
+				"ElementId	ElementId { get; }"
+			],
+			[
+				"IExternal",
+				"IExternalCommand	IExternalCommand"
+			],
+			[
+				"Tr",
+				"TransactionMode	TransactionMode"
+			],
+			[
+				"F",
+				"Fprintf	n int, err error ƒ"
+			],
+			[
+				"Std",
+				"Stdout	*os.File ν"
+			],
+			[
+				"P",
+				"Println	n int, err error ƒ"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "using System;\n\nusing Autodesk.Revit.DB;\nusing Autodesk.Revit.UI;\n\nnamespace Workplane\n{\n    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]\n    public class GACommand : IExternalCommand\n    {\n        public virtual Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)\n        {\n            try\n            {\n                UIDocument uidoc = commandData.Application.ActiveUIDocument;\n                SketchPlane sketchPlane = uidoc.ActiveView.SketchPlane;               \n\n                if (sketchPlane == null)\n                    throw new NullReferenceException();\n\n                XYZ sketchNormal = sketchPlane.GetPlane().Normal;\n                XYZ viewNormal = uidoc.ActiveView.ViewDirection;\n\n                double angle = sketchNormal.AngleTo(viewNormal);\n                if (!sketchNormal.AngleTo(viewNormal).Equals(0))\n                	throw new  WorkplaneException(\"Workplane is not oriented correctly\");\n\n                return Result.Succeeded;\n            }\n            catch (Exception ex)\n            {\n                TaskDialog.Show(\"Revit\", ex.Message);\n\n                return Result.Failed;\n            }\n        }\n    }\n\n    public class WorkplaneException : Exception\n    {\n        public WorkplaneException(string message)\n            : base(message)\n        {\n        }\n    }\n}",
+			"file": "workplane/GACommand.cs",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1384,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Workplane/workplane.addin",
+			"settings":
+			{
+				"buffer_size": 491,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/22791/Repositories/csharp-tmbundle/README.markdown",
+			"settings":
+			{
+				"buffer_size": 3707,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"go",
+				"GoSublime: Browse Packages"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 386.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/22791/Repositories/github.com/dangwalsh/Workplane",
+		"/C/Users/22791/Repositories/github.com/dangwalsh/Workplane/Workplane"
+	],
+	"file_history":
+	[
+		"/C/Program Files/Sublime Text 3/Packages/C#.sublime-package",
+		"/C/Users/22791/Repositories/csharp-tmbundle/Syntaxes/C#.tmLanguage",
+		"/C/Users/22791/Repositories/github.com/dangwalsh/Workplane/Workplane/workplane.csproj",
+		"/C/Users/22791/Documents/GitHub/ExportObj/ExportOBJ/ExportOBJ.csproj",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/User/C#.sublime-settings",
+		"/C/Users/22791/Repositories/github.com/dangwalsh/workplane/workplane/workplane.addin",
+		"/C/Users/22791/Repositories/github.com/dangwalsh/workplane/workplane.sublime-project",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/User/Plain text.sublime-settings",
+		"/C/Users/22791/Documents/Visual Studio 2013/Projects/DONOTEDIT-Gensler.SheetNoteManager/Gensler.SheetNoteManager.sublime-project",
+		"/C/Users/22791/Go/src/gopkg.in/mgo.v2/auth.go",
+		"/C/Users/22791/Go/src/gopkg.in/mgo.v2/sasl/sasl.c",
+		"/C/Go/src/math/rand/rand.go",
+		"/C/ProgramData/Autodesk/Revit/Addins/2014/Gensler.FirmwideToolbar.Modeless.addin",
+		"/U/Settings/My Documents/3dsMaxDesign/IesTest/exports/walls.obj",
+		"/C/Users/22791/Documents/GitHub/ExportObj/ExportOBJ.sublime-project",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/User/JSON.sublime-settings",
+		"/C/Users/22791/Documents/GitHub/ExportObj/ExportOBJ/Command.cs",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/PrebuiltOmniSharpServer/config.json",
+		"/C/Users/22791/Documents/GitHub/ExportObj/ExportOBJ/PointInt.cs",
+		"/C/Users/22791/Documents/GitHub/ExportObj/ExportOBJ.sln",
+		"/C/Users/22791/Go/src/github.com/dangwalsh/hello/hello.go",
+		"/C/Users/22791/Go/src/github.com/dangwalsh/hello/main.cs",
+		"/C/Users/22791/Documents/Visual Studio 2013/Projects/ConsoleApplication1/ConsoleApplication1/ConsoleApplication1.csproj",
+		"/C/Users/22791/Go/src/github.com/dangwalsh/hello/web_server.go",
+		"/C/Users/22791/Desktop/index.html",
+		"/C/Users/22791/Go/src/github.com/dangwalsh/hello/boston.go",
+		"//gensler.ad/netlogon/common/Global/14 Revit Add-Ins/run.kix",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/U/go/src/github.com/dangwalsh/hello/hello.go",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/GoSublime/USAGE.md",
+		"/C/Users/22791/Desktop/go.bat",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
+		"/C/ProgramData/Autodesk/Revit/Addins/2014/bluebeamAddin.addin",
+		"/C/Program Files/Autodesk/Revit Architecture 2014/AddIns/AutoLoader/AutoLoader.addin",
+		"/C/Users/22791/Documents/GitHub/Links/Links/Links.csproj",
+		"/C/Users/22791/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/22791/Desktop/Bilingual Text - 2014/rvtCommand.vb",
+		"/U/Settings/My Documents/GitHub/Links/Links/Links.csproj",
+		"/C/Users/22791/Desktop/test",
+		"//gensler.ad/Transfer/Atlanta/Daniel Walsh/Bilingual Text - 2014/frmProgress.vb",
+		"//gensler.ad/Transfer/Atlanta/Daniel Walsh/Bilingual Text - 2014/frmMain.vb"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "workplane/GACommand.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1384,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								780,
+								780
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "Workplane/workplane.addin",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 491,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/22791/Repositories/csharp-tmbundle/README.markdown",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3707,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								952,
+								952
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.6825839292,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.9o://C:\\Users\\22791\\Go\\src\\github.com\\dangwalsh\\hello":
+	{
+		"height": 299.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 102.0
+	},
+	"output.exec":
+	{
+		"height": 151.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 102.0
+	},
+	"project": "workplane.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 257.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
