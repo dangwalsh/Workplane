@@ -70,6 +70,10 @@ ipch/
 
 # Visual Studio profiler
 *.psess
+
+#Sublime Text Project
+*.sublime-project
+*.sublime-workpace
 *.vsp
 *.vspx
 

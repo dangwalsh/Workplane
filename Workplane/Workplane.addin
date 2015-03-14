@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>Workplane.dll</Assembly>
+    <ClientId>FF1DA443-0E6A-4D32-848C-CFD9D317187F</ClientId>
+    <FullClassName>Workplane.Command</FullClassName>
+    <Text>Workplane Test</Text>
+    <Description>Test out the properties of workplanes.</Description>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+    <VendorId>XXXX</VendorId>
+    <VendorDescription>Gensler</VendorDescription>
+  </AddIn>
+</RevitAddIns>
